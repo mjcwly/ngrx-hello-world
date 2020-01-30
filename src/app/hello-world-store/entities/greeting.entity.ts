@@ -35,12 +35,6 @@ const {
   selectAll,
   selectTotal,
 } = adapter.getSelectors();
- 
-// export const selectGreetingIds = selectIds;
-// export const selectGreetingEntities = selectEntities;
-// export const selectGreetingAll = selectAll;
-// export const selectGreetingTotal = selectTotal;
-
 
 export const selectGreetingState = createFeatureSelector<AppState, GreetingState>('greetingState');
 // export const selectGreetingState = (state: AppState) => state.greetingState;
@@ -55,7 +49,12 @@ export const selectGreetingEntities = createSelector(
   selectEntities
 );
 
-export const selectGreetings = createSelector(
-  selectGreetingEntities,
+export const selectAllGreetings = createSelector(
+  selectGreetingState,
+  selectAll
+);
+
+export const selectSelectedGreetingId = createSelector(
+  selectGreetingState,
   (entities) => Object.keys(entities).map(key => entities[key])
 );
