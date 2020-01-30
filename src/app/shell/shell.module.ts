@@ -1,21 +1,24 @@
+// Core imports...
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+
+// Application imports...
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
   exports: [
-    NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    NavbarComponent
   ]
 })
 export class ShellModule { }

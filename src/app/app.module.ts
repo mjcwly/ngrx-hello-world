@@ -1,8 +1,8 @@
-// Core Imports...
+// Core imports...
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-// Application Imports...
+// Application imports...
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShellModule } from './shell/shell.module';
@@ -17,6 +17,8 @@ import { ShellModule } from './shell/shell.module';
     ShellModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
