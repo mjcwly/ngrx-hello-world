@@ -1,0 +1,17 @@
+<div *ngIf="greetings$ | async as greetings">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr class="bg-dark text-light">
+        <th>Greeting Id</th>
+        <th>Greeting Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let g of greetings" (click)="onGreetingClicked(g)"
+        [ngClass]="{'bg-info': g.greetingId === (selectedGreetingId$ | async)}">
+        <td>{{g.greetingId}}</td>
+        <td>{{g.greetingText}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>  
