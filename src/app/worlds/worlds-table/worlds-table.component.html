@@ -1,0 +1,17 @@
+<div *ngIf="worlds$ | async as worlds">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr class="bg-dark text-light">
+          <th>World Id</th>
+          <th>World Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let w of worlds" (click)="onWorldClicked(w)"
+          [ngClass]="{'bg-info': w.worldId === (selectedWorldId$ | async)}">
+          <td>{{w.worldId}}</td>
+          <td>{{w.worldName}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>  

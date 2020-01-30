@@ -12,17 +12,17 @@ export interface GreetingState extends EntityState<Greeting> {
   selectedGreetingId: number | null;
 }
 
-export function selectUserId(a: Greeting): number {
-  return a.greetingId;
+export function selectGreetingId(g: Greeting): number {
+  return g.greetingId;
 }
 
-export function sortByName(a: Greeting, b: Greeting): number {
-  return a.greetingText.localeCompare(b.greetingText);
+export function sortByGreetingText(g1: Greeting, g2: Greeting): number {
+  return g1.greetingText.localeCompare(g2.greetingText);
 }
 
 export const adapter: EntityAdapter<Greeting> = createEntityAdapter<Greeting>({
-  selectId: selectUserId,
-  sortComparer: sortByName,
+  selectId: selectGreetingId,
+  sortComparer: sortByGreetingText,
 });
 
 export const initialGreetingState: GreetingState = adapter.getInitialState({
@@ -37,7 +37,6 @@ const {
 } = adapter.getSelectors();
 
 export const selectGreetingState = createFeatureSelector<AppState, GreetingState>('greetingState');
-// export const selectGreetingState = (state: AppState) => state.greetingState;
 
 export const selectGreetingIds = createSelector(
   selectGreetingState,

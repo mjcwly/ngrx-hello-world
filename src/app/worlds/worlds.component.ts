@@ -8,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorldsComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    console.log("WorldsComponent | Constructor");
+  }
 
   ngOnInit() {
+    console.log("WorldsComponent | ngOnInit");
   }
 
 }

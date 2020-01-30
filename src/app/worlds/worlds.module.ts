@@ -5,10 +5,14 @@ import { CommonModule } from '@angular/common';
 // Application imports...
 import { WorldsRoutingModule } from './worlds-routing.module';
 import { WorldsComponent } from './worlds.component';
+import { WorldsTableComponent } from './worlds-table/worlds-table.component';
+import { WorldsCountComponent } from './worlds-count/worlds-count.component';
 
 @NgModule({
   declarations: [
-    WorldsComponent
+    WorldsComponent,
+    WorldsTableComponent,
+    WorldsCountComponent
   ],
   imports: [
     CommonModule,

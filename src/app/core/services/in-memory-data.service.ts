@@ -18,6 +18,17 @@ export class InMemoryDataService implements InMemoryDbService {
       { greetingId: 5, greetingText: "Hiya" }
     ];
 
-    return { greetings };
+    const worlds = [
+      { worldId: 1, worldName: "Middle Earth" },
+      { worldId: 2, worldName: "Cybertron" },
+      { worldId: 3, worldName: "Krypton" },
+      { worldId: 4, worldName: "Saturn" },
+      { worldId: 5, worldName: "Thundera" },
+      { worldId: 6, worldName: "Mars" },
+      { worldId: 7, worldName: "Solaris" },
+      { worldId: 8, worldName: "Button Moon" },
+    ];
+
+    return { greetings, worlds };
   }
 }

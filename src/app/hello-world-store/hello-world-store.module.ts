@@ -8,8 +8,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // Application imports...
 import { GreetingEffects } from './effects/greeting.effects';
-import { reducers } from './reducers/reducer';
 import { GreetingService } from './services/greeting.service';
+import { reducers } from './reducers/reducer';
+import { WorldService } from './services/world.service';
+import { WorldEffects } from './effects/world.effects';
 
 @NgModule({
   declarations: [],
@@ -20,11 +22,13 @@ import { GreetingService } from './services/greeting.service';
     // Instrumentation must be imported after importing StoreModule (config is optional)
     StoreDevtoolsModule.instrument({}),
     EffectsModule.forRoot([
-      GreetingEffects
+      GreetingEffects,
+      WorldEffects,
     ]),
   ],
   providers: [
-    GreetingService
+    GreetingService,
+    WorldService,
   ],
   exports: [
     StoreModule, 
