@@ -6,11 +6,13 @@ import { CommonModule } from '@angular/common';
 import { GreetingsRoutingModule } from './greetings-routing.module';
 import { GreetingsComponent } from './greetings.component';
 import { GreetingsTableComponent } from './greetings-table/greetings-table.component';
+import { GreetingsCountComponent } from './greetings-count/greetings-count.component';
 
 @NgModule({
   declarations: [
     GreetingsComponent,
-    GreetingsTableComponent
+    GreetingsTableComponent,
+    GreetingsCountComponent
   ],
   imports: [
     CommonModule,

@@ -54,6 +54,11 @@ export const selectAllGreetings = createSelector(
   selectAll
 );
 
+export const selectTotalNumberOfGreetings = createSelector(
+  selectGreetingState,
+  selectTotal
+);
+
 export const selectSelectedGreetingId = createSelector(
   selectGreetingState,
   (state) => state.selectedGreetingId
