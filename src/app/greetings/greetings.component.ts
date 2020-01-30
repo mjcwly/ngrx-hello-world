@@ -6,8 +6,7 @@ import { Observable } from 'rxjs';
 // Application imports...
 import { AppState } from '../hello-world-store/state/app-state';
 import * as GreetingActions from '../hello-world-store/actions/greeting.actions'
-import { Greeting, selectGreetingIds, selectGreetingEntities, selectGreetings } from '../hello-world-store/entities/greeting.entity';
-import { Dictionary } from '@ngrx/entity';
+import { Greeting, selectGreetings } from '../hello-world-store/entities/greeting.entity';
 
 @Component({
   selector: 'app-greetings',
@@ -16,7 +15,7 @@ import { Dictionary } from '@ngrx/entity';
 })
 export class GreetingsComponent implements OnInit {
 
-  greetings$: Observable<Greeting[]>
+  greetings$: Observable<Greeting[]>;
 
   constructor(
     private store: Store<AppState>
