@@ -1,11 +1,17 @@
 // Core imports...
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
+
+// Third-party imports
+import { HttpClientInMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
 
 // Application imports...
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShellModule } from './shell/shell.module';
+import { HelloWorldStoreModule } from './hello-world-store/hello-world-store.module';
+import { InMemoryDataService } from './core/services/in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -14,9 +20,13 @@ import { ShellModule } from './shell/shell.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ShellModule
+    HelloWorldStoreModule,
+    ShellModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 100 })
   ],
-  providers: [],
+  providers: [
+    { provide: InMemoryDataService, useExisting: InMemoryDbService }
+  ],
   bootstrap: [
     AppComponent
   ]
