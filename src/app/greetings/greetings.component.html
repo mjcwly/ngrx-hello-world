@@ -11,7 +11,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let g of greetings" (click)="onGreetingClicked(g)">
+            <tr *ngFor="let g of greetings" (click)="onGreetingClicked(g)" [ngClass]="{'bg-info': g.greetingId === (selectedGreetingId$ | async)}">
               <td>{{g.greetingId}}</td>
               <td>{{g.greetingText}}</td>
             </tr>

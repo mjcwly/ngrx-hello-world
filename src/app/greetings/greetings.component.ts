@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 // Application imports...
 import { AppState } from '../hello-world-store/state/app-state';
 import * as GreetingActions from '../hello-world-store/actions/greeting.actions'
-import { Greeting, selectAllGreetings } from '../hello-world-store/entities/greeting.entity';
+import { Greeting, selectAllGreetings, selectSelectedGreetingId } from '../hello-world-store/entities/greeting.entity';
 
 @Component({
   selector: 'app-greetings',
@@ -16,11 +16,13 @@ import { Greeting, selectAllGreetings } from '../hello-world-store/entities/gree
 export class GreetingsComponent implements OnInit {
 
   greetings$: Observable<Greeting[]>;
+  selectedGreetingId$: Observable<number>;
 
   constructor(
     private store: Store<AppState>
   ) { 
     this.greetings$ = this.store.select(selectAllGreetings);
+    this.selectedGreetingId$ = this.store.select(selectSelectedGreetingId);
   }
 
   ngOnInit() {
