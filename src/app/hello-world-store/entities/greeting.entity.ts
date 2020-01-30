@@ -56,5 +56,5 @@ export const selectAllGreetings = createSelector(
 
 export const selectSelectedGreetingId = createSelector(
   selectGreetingState,
-  (entities) => Object.keys(entities).map(key => entities[key])
+  (state) => state.selectedGreetingId
 );
