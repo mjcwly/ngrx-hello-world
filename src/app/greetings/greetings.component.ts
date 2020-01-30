@@ -27,4 +27,8 @@ export class GreetingsComponent implements OnInit {
     this.store.dispatch(GreetingActions.loadGreetings());
   }
 
+  onGreetingClicked(g: Greeting) {
+    this.store.dispatch(GreetingActions.setSelectedGreeting({ greetingId: g.greetingId }));
+  }
+
 }

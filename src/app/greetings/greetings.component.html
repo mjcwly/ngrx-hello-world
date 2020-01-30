@@ -11,7 +11,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let g of greetings">
+            <tr *ngFor="let g of greetings" (click)="onGreetingClicked(g)">
               <td>{{g.greetingId}}</td>
               <td>{{g.greetingText}}</td>
             </tr>

@@ -9,8 +9,12 @@ const createGreetingReducer = createReducer(initialGreetingState,
   on(GreetingActions.loadGreetingsSuccess, (state, { response }) => {
     return adapter.addAll(response, state);
   }),
+
+  on(GreetingActions.setSelectedGreeting, (state, { greetingId }) => {
+    return { ...state, selectedGreetingId: greetingId };
+  }),
 );
- 
+
 export function reducer(state: GreetingState | undefined, action: Action) {
   return createGreetingReducer(state, action);
 }
