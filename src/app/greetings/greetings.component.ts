@@ -1,11 +1,13 @@
 // Core imports...
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 // Application imports...
 import { AppState } from '../hello-world-store/state/app-state';
 import * as GreetingActions from '../hello-world-store/actions/greeting.actions'
-import { GreetingService } from '../hello-world-store/services/greeting.service';
+import { Greeting, selectGreetingIds, selectGreetingEntities, selectGreetings } from '../hello-world-store/entities/greeting.entity';
+import { Dictionary } from '@ngrx/entity';
 
 @Component({
   selector: 'app-greetings',
@@ -14,17 +16,16 @@ import { GreetingService } from '../hello-world-store/services/greeting.service'
 })
 export class GreetingsComponent implements OnInit {
 
+  greetings$: Observable<Greeting[]>
+
   constructor(
-    private store: Store<AppState>,
-    private greetingService: GreetingService
-  ) { }
+    private store: Store<AppState>
+  ) { 
+    this.greetings$ = this.store.select(selectGreetings);
+  }
 
   ngOnInit() {
     this.store.dispatch(GreetingActions.loadGreetings());
-
-    this.store.select(x => x.greetingState).subscribe(x => {
-      console.log(x);
-    });
   }
 
 }

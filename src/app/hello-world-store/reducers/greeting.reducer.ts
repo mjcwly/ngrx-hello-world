@@ -14,3 +14,4 @@ const createGreetingReducer = createReducer(initialGreetingState,
 export function reducer(state: GreetingState | undefined, action: Action) {
   return createGreetingReducer(state, action);
 }
+

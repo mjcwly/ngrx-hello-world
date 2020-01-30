@@ -1,5 +1,7 @@
 // Core imports...
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { AppState } from '../state/app-state';
 
 export interface Greeting {
   greetingId: number;
@@ -27,3 +29,33 @@ export const initialGreetingState: GreetingState = adapter.getInitialState({
   selectedGreetingId: null
 });
 
+const {
+  selectIds,
+  selectEntities,
+  selectAll,
+  selectTotal,
+} = adapter.getSelectors();
+ 
+// export const selectGreetingIds = selectIds;
+// export const selectGreetingEntities = selectEntities;
+// export const selectGreetingAll = selectAll;
+// export const selectGreetingTotal = selectTotal;
+
+
+export const selectGreetingState = createFeatureSelector<AppState, GreetingState>('greetingState');
+// export const selectGreetingState = (state: AppState) => state.greetingState;
+
+export const selectGreetingIds = createSelector(
+  selectGreetingState,
+  selectIds
+);
+
+export const selectGreetingEntities = createSelector(
+  selectGreetingState,
+  selectEntities
+);
+
+export const selectGreetings = createSelector(
+  selectGreetingEntities,
+  (entities) => Object.keys(entities).map(key => entities[key])
+);

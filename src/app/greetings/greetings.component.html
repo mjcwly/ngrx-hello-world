@@ -1,7 +1,23 @@
 <div class="container-fluid main-content">
   <div class="row">
     <div class="col-12">
-      <h1>greetings works!</h1>
+      <h1>Greetings</h1>
+      <div *ngIf="greetings$ | async as greetings">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr class="bg-dark text-light">
+              <th>Greeting Id</th>
+              <th>Greeting Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let g of greetings">
+              <td>{{g.greetingId}}</td>
+              <td>{{g.greetingText}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
