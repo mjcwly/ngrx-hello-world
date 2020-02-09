@@ -13,7 +13,7 @@ import { Greeting, selectAllGreetings, selectSelectedGreetingId } from '../../he
   templateUrl: './greetings-table.component.html',
   styleUrls: ['./greetings-table.component.css']
 })
-export class GreetingsTableComponent implements OnInit {
+export class GreetingsTableComponent {
 
   greetings$: Observable<Greeting[]>;
   selectedGreetingId$: Observable<number>;
@@ -23,10 +23,6 @@ export class GreetingsTableComponent implements OnInit {
   ) { 
     this.greetings$ = this.store.select(selectAllGreetings);
     this.selectedGreetingId$ = this.store.select(selectSelectedGreetingId);
-  }
-
-  ngOnInit() {
-    this.store.dispatch(GreetingActions.loadGreetings());
   }
 
   onGreetingClicked(g: Greeting) {

@@ -26,7 +26,7 @@ export const adapter: EntityAdapter<World> = createEntityAdapter<World>({
 });
 
 export const initialWorldState: WorldState = adapter.getInitialState({
-  selectedWorldId: 1
+  selectedWorldId: null
 });
 
 const {

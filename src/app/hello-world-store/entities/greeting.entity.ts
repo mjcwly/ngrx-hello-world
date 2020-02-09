@@ -26,7 +26,7 @@ export const adapter: EntityAdapter<Greeting> = createEntityAdapter<Greeting>({
 });
 
 export const initialGreetingState: GreetingState = adapter.getInitialState({
-  selectedGreetingId: 1
+  selectedGreetingId: null
 });
 
 const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors();

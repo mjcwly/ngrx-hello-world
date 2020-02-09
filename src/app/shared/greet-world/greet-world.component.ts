@@ -38,6 +38,8 @@ export class GreetWorldComponent implements OnInit {
         console.log("world: ", world);
       }),
       map(([greeting, world]) => {
+        if (!greeting) return "Select a Greeting!";
+        if (!world) return "Select a World!";
         return greeting.greetingText + ', ' + world.worldName
       },
     ));

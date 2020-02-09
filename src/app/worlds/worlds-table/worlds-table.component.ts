@@ -13,7 +13,7 @@ import { World, selectAllWorlds, selectSelectedWorldId } from '../../hello-world
   templateUrl: './worlds-table.component.html',
   styleUrls: ['./worlds-table.component.css']
 })
-export class WorldsTableComponent implements OnInit {
+export class WorldsTableComponent {
 
   worlds$: Observable<World[]>;
   selectedWorldId$: Observable<number>;
@@ -23,10 +23,6 @@ export class WorldsTableComponent implements OnInit {
   ) { 
     this.worlds$ = this.store.select(selectAllWorlds);
     this.selectedWorldId$ = this.store.select(selectSelectedWorldId);
-  }
-
-  ngOnInit() {
-    this.store.dispatch(WorldActions.loadWorlds());
   }
 
   onWorldClicked(g: World) {
