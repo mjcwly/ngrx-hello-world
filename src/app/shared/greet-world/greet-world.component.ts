@@ -16,6 +16,7 @@ export class GreetWorldComponent implements OnInit {
   greeting$: Observable<Greeting>;
   world$: Observable<World>;
   helloWorld$: Observable<string>;
+  canGreet$: Observable<boolean>;
 
   constructor(
     private store: Store<AppState>
@@ -41,8 +42,17 @@ export class GreetWorldComponent implements OnInit {
         if (!greeting) return "Select a Greeting!";
         if (!world) return "Select a World!";
         return greeting.greetingText + ', ' + world.worldName
-      },
+      }
     ));
+
+    this.canGreet$ = combineLatest(
+      this.greeting$,
+      this.world$
+    ).pipe(
+      map(([greeting, world]) => {
+        return (!!greeting) && (!!world);
+      })
+    )
   }
 
 }
