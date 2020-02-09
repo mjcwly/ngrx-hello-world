@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class GreetingsComponent implements OnInit {
 
   constructor() { 
-    console.log("GreetingsComponent | Constructor");
+    console.log("GreetingsComponent | constructor");
   }
 
   ngOnInit() {
