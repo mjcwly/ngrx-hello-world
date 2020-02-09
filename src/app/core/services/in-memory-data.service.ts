@@ -19,7 +19,7 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const worlds = [
-      { worldId: 1, worldName: "Middle Earth" },
+      { worldId: 1, worldName: "World" },
       { worldId: 2, worldName: "Cybertron" },
       { worldId: 3, worldName: "Krypton" },
       { worldId: 4, worldName: "Saturn" },

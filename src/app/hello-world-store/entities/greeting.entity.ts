@@ -26,15 +26,10 @@ export const adapter: EntityAdapter<Greeting> = createEntityAdapter<Greeting>({
 });
 
 export const initialGreetingState: GreetingState = adapter.getInitialState({
-  selectedGreetingId: null
+  selectedGreetingId: 1
 });
 
-const {
-  selectIds,
-  selectEntities,
-  selectAll,
-  selectTotal,
-} = adapter.getSelectors();
+const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors();
 
 export const selectGreetingState = createFeatureSelector<AppState, GreetingState>('greetingState');
 
@@ -61,4 +56,10 @@ export const selectTotalNumberOfGreetings = createSelector(
 export const selectSelectedGreetingId = createSelector(
   selectGreetingState,
   (state) => state.selectedGreetingId
+);
+
+export const selectSelectedGreeting = createSelector(
+  selectGreetingEntities,
+  selectSelectedGreetingId,
+  (entities, greetingId) => entities[greetingId]
 );

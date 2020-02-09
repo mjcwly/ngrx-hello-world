@@ -26,7 +26,7 @@ export const adapter: EntityAdapter<World> = createEntityAdapter<World>({
 });
 
 export const initialWorldState: WorldState = adapter.getInitialState({
-  selectedWorldId: null
+  selectedWorldId: 1
 });
 
 const {
@@ -61,4 +61,10 @@ export const selectTotalNumberOfWorlds = createSelector(
 export const selectSelectedWorldId = createSelector(
   selectWorldState,
   (state) => state.selectedWorldId
+);
+
+export const selectSelectedWorld = createSelector(
+  selectWorldEntities,
+  selectSelectedWorldId,
+  (entities, greetingId) => entities[greetingId]
 );

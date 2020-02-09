@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ShellModule } from './shell/shell.module';
 import { HelloWorldStoreModule } from './hello-world-store/hello-world-store.module';
 import { InMemoryDataService } from './core/services/in-memory-data.service';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { InMemoryDataService } from './core/services/in-memory-data.service';
     AppRoutingModule,
     HelloWorldStoreModule,
     ShellModule,
+    SharedModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 100 })
   ],
   providers: [
