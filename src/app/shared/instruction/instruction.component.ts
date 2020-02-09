@@ -7,29 +7,29 @@ import { selectSelectedWorld } from '../../hello-world-store/entities/world.enti
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-greet-world',
-  templateUrl: './greet-world.component.html',
-  styleUrls: ['./greet-world.component.css']
+  selector: 'app-instruction',
+  templateUrl: './instruction.component.html',
+  styleUrls: ['./instruction.component.css']
 })
-export class GreetWorldComponent implements OnInit {
+export class InstructionComponent implements OnInit {
 
-  greetWorldText$: Observable<string>;
+  instruction$: Observable<string>;
 
   constructor(private store: Store<AppState>) { 
-    console.log("GreetWorldComponent | constructor");
+    console.log("InstructionComponent | constructor");
   }
-  
+
   ngOnInit() {
-    console.log("GreetWorldComponent | ngOnInit");
+    console.log("InstructionComponent | ngOnInit");
 
     const greeting$ = this.store.select(selectSelectedGreeting);
     const world$ = this.store.select(selectSelectedWorld);
-    
-    this.greetWorldText$ = combineLatest(greeting$,world$).pipe(
+
+    this.instruction$ = combineLatest(greeting$,world$).pipe(
       map(([greeting, world]) => {
-        if (!greeting) return null;
-        if (!world) return null;
-        return greeting.greetingText + ', ' + world.worldName
+        if (!greeting) return "Select a Greeting!";
+        if (!world) return "Select a World!";
+        return null;
       })
     );
   }
