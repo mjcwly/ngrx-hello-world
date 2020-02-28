@@ -1,5 +1,5 @@
 // Core imports...
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -11,9 +11,10 @@ import { World, selectAllWorlds, selectSelectedWorldId } from '../../hello-world
 @Component({
   selector: 'app-worlds-table',
   templateUrl: './worlds-table.component.html',
-  styleUrls: ['./worlds-table.component.css']
+  styleUrls: ['./worlds-table.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WorldsTableComponent {
+export class WorldsTableComponent implements OnInit, OnChanges {
 
   worlds$: Observable<World[]>;
   selectedWorldId$: Observable<number>;
@@ -21,8 +22,21 @@ export class WorldsTableComponent {
   constructor(
     private store: Store<AppState>
   ) { 
+    console.log("WorldsTableComponent | constructor");
     this.worlds$ = this.store.select(selectAllWorlds);
     this.selectedWorldId$ = this.store.select(selectSelectedWorldId);
+  }
+
+  ngOnInit() {
+    console.log("WorldsTableComponent | ngOnInit");
+  }
+
+  ngOnChanges() {
+    console.log("WorldsTableComponent | ngOnChanges");
+  }
+
+  ngDoCheck() {
+    console.log("WorldsTableComponent | ngDoCheck")
   }
 
   onWorldClicked(g: World) {

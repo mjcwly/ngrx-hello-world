@@ -11,7 +11,9 @@ export class WorldService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) { 
+    console.log("WorldService | constructor");
+  }
 
   getWorlds(): Observable<World[]> {
     return this.http.get<World[]>("api/worlds");

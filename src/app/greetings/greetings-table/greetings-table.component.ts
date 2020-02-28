@@ -1,5 +1,5 @@
 // Core imports...
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnChanges } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -11,9 +11,10 @@ import { Greeting, selectAllGreetings, selectSelectedGreetingId } from '../../he
 @Component({
   selector: 'app-greetings-table',
   templateUrl: './greetings-table.component.html',
-  styleUrls: ['./greetings-table.component.css']
+  styleUrls: ['./greetings-table.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GreetingsTableComponent {
+export class GreetingsTableComponent implements OnInit, OnChanges {
 
   greetings$: Observable<Greeting[]>;
   selectedGreetingId$: Observable<number>;
@@ -21,8 +22,21 @@ export class GreetingsTableComponent {
   constructor(
     private store: Store<AppState>
   ) { 
+    console.log("GreetingsTableComponent | constructor");
     this.greetings$ = this.store.select(selectAllGreetings);
     this.selectedGreetingId$ = this.store.select(selectSelectedGreetingId);
+  }
+  
+  ngOnInit() {
+    console.log("GreetingsTableComponent | ngOnInit");
+  }
+
+  ngOnChanges() {
+    console.log("GreetingsTableComponent | ngOnChanges");
+  }
+
+  ngDoCheck() {
+    console.log("GreetingsTableComponent | ngDoCheck")
   }
 
   onGreetingClicked(g: Greeting) {

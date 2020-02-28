@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../hello-world-store/state/app-state';
 import { Observable, combineLatest } from 'rxjs';
@@ -9,9 +9,10 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-greet-world',
   templateUrl: './greet-world.component.html',
-  styleUrls: ['./greet-world.component.css']
+  styleUrls: ['./greet-world.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GreetWorldComponent implements OnInit {
+export class GreetWorldComponent implements OnInit, OnChanges {
 
   greetWorldText$: Observable<string>;
 
@@ -32,5 +33,13 @@ export class GreetWorldComponent implements OnInit {
         return greeting.greetingText + ', ' + world.worldName
       })
     );
+  }
+
+  ngOnChanges() {
+    console.log("GreetWorldComponent | ngOnChanges");
+  }
+
+  ngDoCheck() {
+    console.log("GreetWorldComponent | ngDoCheck")
   }
 }

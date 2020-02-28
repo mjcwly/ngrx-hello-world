@@ -1,5 +1,5 @@
 // Core imports...
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -10,7 +10,8 @@ import { selectTotalNumberOfGreetings } from '../../hello-world-store/entities/g
 @Component({
   selector: 'app-greetings-count',
   templateUrl: './greetings-count.component.html',
-  styleUrls: ['./greetings-count.component.css']
+  styleUrls: ['./greetings-count.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GreetingsCountComponent {
 
@@ -19,6 +20,19 @@ export class GreetingsCountComponent {
   constructor(
     private store: Store<AppState>
   ) { 
+    console.log("GreetingsCountComponent | constructor");
     this.totalNumberOfGreetings$ = this.store.select(selectTotalNumberOfGreetings)
+  }
+
+  ngOnInit() {
+    console.log("GreetingsCountComponent | ngOnInit");
+  }
+
+  ngOnChanges() {
+    console.log("GreetingsCountComponent | ngOnChanges");
+  }
+
+  ngDoCheck() {
+    console.log("GreetingsCountComponent | ngDoCheck")
   }
 }

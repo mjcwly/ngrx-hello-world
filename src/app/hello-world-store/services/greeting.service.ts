@@ -11,7 +11,9 @@ export class GreetingService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) { 
+    console.log("GreetingService | constructor");
+  }
 
   getGreetings(): Observable<Greeting[]> {
     return this.http.get<Greeting[]>("api/greetings");
