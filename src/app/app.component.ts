@@ -12,7 +12,7 @@ import * as WorldActions from './hello-world-store/actions/world.actions'
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   title = 'ngrx-hello-world';
