@@ -7,7 +7,7 @@ import * as WorldActions from '../actions/world.actions';
 
 const createWorldReducer = createReducer(initialWorldState,
   on(WorldActions.loadWorldsSuccess, (state, { response }) => {
-    return adapter.addAll(response, state);
+    return adapter.setAll(response, state);
   }),
 
   on(WorldActions.setSelectedWorld, (state, { worldId }) => {

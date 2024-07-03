@@ -7,7 +7,7 @@ import * as GreetingActions from '../actions/greeting.actions';
 
 const createGreetingReducer = createReducer(initialGreetingState,
   on(GreetingActions.loadGreetingsSuccess, (state, { response }) => {
-    return adapter.addAll(response, state);
+    return adapter.setAll(response, state);
   }),
 
   on(GreetingActions.setSelectedGreeting, (state, { greetingId }) => {
