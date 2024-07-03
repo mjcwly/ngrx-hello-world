@@ -1,6 +1,6 @@
 // Core imports...
-import { Component, OnInit, OnChanges, ChangeDetectionStrategy } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 // Application imports...
@@ -11,8 +11,7 @@ import { World, selectAllWorlds, selectSelectedWorldId } from '../../hello-world
 @Component({
   selector: 'app-worlds-table',
   templateUrl: './worlds-table.component.html',
-  styleUrls: ['./worlds-table.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./worlds-table.component.css']
 })
 export class WorldsTableComponent implements OnInit, OnChanges {
 

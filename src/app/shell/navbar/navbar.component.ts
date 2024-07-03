@@ -1,11 +1,10 @@
 // Core imports...
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
 

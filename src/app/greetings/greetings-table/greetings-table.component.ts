@@ -1,5 +1,5 @@
 // Core imports...
-import { Component, OnInit, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -11,8 +11,7 @@ import { Greeting, selectAllGreetings, selectSelectedGreetingId } from '../../he
 @Component({
   selector: 'app-greetings-table',
   templateUrl: './greetings-table.component.html',
-  styleUrls: ['./greetings-table.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./greetings-table.component.css']
 })
 export class GreetingsTableComponent implements OnInit, OnChanges {
 

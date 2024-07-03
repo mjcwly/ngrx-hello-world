@@ -1,11 +1,10 @@
 // Core imports...
-import { Component, OnInit, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-greetings',
   templateUrl: './greetings.component.html',
-  styleUrls: ['./greetings.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./greetings.component.css']
 })
 export class GreetingsComponent implements OnInit, OnChanges {
   

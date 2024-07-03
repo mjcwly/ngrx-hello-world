@@ -1,6 +1,6 @@
 // Core imports...
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 // Application imports...
@@ -10,8 +10,7 @@ import { selectTotalNumberOfWorlds } from '../../hello-world-store/entities/worl
 @Component({
   selector: 'app-worlds-count',
   templateUrl: './worlds-count.component.html',
-  styleUrls: ['./worlds-count.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./worlds-count.component.css']
 })
 export class WorldsCountComponent {
 

@@ -1,11 +1,10 @@
 // Core imports...
-import { Component, OnInit, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-worlds',
   templateUrl: './worlds.component.html',
-  styleUrls: ['./worlds.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./worlds.component.css']
 })
 export class WorldsComponent implements OnInit, OnChanges {
 
