@@ -1,3 +1,3 @@
-<div class="alert alert-warning" role="alert">
+`<div class="alert alert-warning" role="alert" *ngIf="(instruction$ | async) as instruction">
   <h1>{{ instruction }}</h1>
 </div>

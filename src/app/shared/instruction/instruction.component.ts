@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../hello-world-store/state/app-state';
 import { Observable, combineLatest } from 'rxjs';
@@ -9,13 +9,11 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-instruction',
   templateUrl: './instruction.component.html',
-  styleUrls: ['./instruction.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./instruction.component.css']
 })
 export class InstructionComponent implements OnInit, OnChanges {
 
   instruction$: Observable<string>;
-  instruction: string;
 
   constructor(private store: Store<AppState>) { 
     console.log("InstructionComponent | constructor");
@@ -27,15 +25,13 @@ export class InstructionComponent implements OnInit, OnChanges {
     const greeting$ = this.store.select(selectSelectedGreeting);
     const world$ = this.store.select(selectSelectedWorld);
 
-    this.instruction$ = combineLatest(greeting$,world$).pipe(
+    this.instruction$ = combineLatest([greeting$,world$]).pipe(
       map(([greeting, world]) => {
         if (!greeting) return "Select a Greeting!";
         if (!world) return "Select a World!";
         return null;
       })
     );
-
-    this.instruction$.subscribe(x => this.instruction = x);
   }
 
   ngOnChanges() {
