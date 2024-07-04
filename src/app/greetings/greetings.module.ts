@@ -17,6 +17,9 @@ import { GreetingsCountComponent } from './greetings-count/greetings-count.compo
   imports: [
     CommonModule,
     GreetingsRoutingModule
+  ],
+  exports: [
+    GreetingsComponent
   ]
 })
 export class GreetingsModule { }

@@ -17,6 +17,9 @@ import { WorldsCountComponent } from './worlds-count/worlds-count.component';
   imports: [
     CommonModule,
     WorldsRoutingModule,
+  ],
+  exports: [
+    WorldsComponent
   ]
 })
 export class WorldsModule { }
