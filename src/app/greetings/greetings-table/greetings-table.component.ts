@@ -1,7 +1,7 @@
 // Core imports...
 import { Component, OnInit, OnChanges } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, combineLatest, map } from 'rxjs';
 
 // Application imports...
 import { AppState } from '../../hello-world-store/state/app-state';
@@ -11,19 +11,27 @@ import { Greeting, selectAllGreetings, selectSelectedGreetingId } from '../../he
 @Component({
   selector: 'app-greetings-table',
   templateUrl: './greetings-table.component.html',
-  styleUrls: ['./greetings-table.component.css']
+  styleUrls: ['./greetings-table.component.scss']
 })
 export class GreetingsTableComponent implements OnInit, OnChanges {
 
-  greetings$: Observable<Greeting[]>;
-  selectedGreetingId$: Observable<number>;
+  greetings$: Observable<Greeting[]> = this.store.select(selectAllGreetings);
+  
+  selectedGreetingId$: Observable<number> = this.store.select(selectSelectedGreetingId);
+
+  vm$ = combineLatest([
+    this.greetings$,
+    this.selectedGreetingId$
+  ]).pipe(
+    map(([greetings, selectedGreetingId]) => {
+      return { greetings, selectedGreetingId };
+    })
+  );
 
   constructor(
     private store: Store<AppState>
   ) { 
     console.log("GreetingsTableComponent | constructor");
-    this.greetings$ = this.store.select(selectAllGreetings);
-    this.selectedGreetingId$ = this.store.select(selectSelectedGreetingId);
   }
   
   ngOnInit() {
@@ -38,8 +46,8 @@ export class GreetingsTableComponent implements OnInit, OnChanges {
     console.log("GreetingsTableComponent | ngDoCheck")
   }
 
-  onGreetingClicked(g: Greeting) {
-    this.store.dispatch(GreetingActions.setSelectedGreeting({ greetingId: g.greetingId }));
+  onGreetingClicked(g: Greeting, selectedGreetingId: number) {
+    const newSelectedGreetingId = (g.greetingId !== selectedGreetingId) ? g.greetingId : null; 
+    this.store.dispatch(GreetingActions.setSelectedGreeting({ greetingId: newSelectedGreetingId }));
   }
-
 }

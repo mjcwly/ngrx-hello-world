@@ -1,4 +1,4 @@
-<div *ngIf="worlds$ | async as worlds">
+<div *ngIf="vm$ | async as vm">
     <table class="table table-bordered table-striped">
       <thead>
         <tr class="bg-dark text-light">
@@ -7,8 +7,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let w of worlds" (click)="onWorldClicked(w)"
-          [ngClass]="{'bg-info': w.worldId === (selectedWorldId$ | async)}">
+        <tr *ngFor="let w of vm.worlds" (click)="onWorldClicked(w, vm.selectedWorldId)"
+          [ngClass]="{'bg-info': w.worldId === vm.selectedWorldId }"
+          class="clickable">
           <td>{{w.worldId}}</td>
           <td>{{w.worldName}}</td>
         </tr>

@@ -1,7 +1,7 @@
 // Core imports...
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, map } from 'rxjs';
 
 // Application imports...
 import { AppState } from '../../hello-world-store/state/app-state';
@@ -11,19 +11,27 @@ import { World, selectAllWorlds, selectSelectedWorldId } from '../../hello-world
 @Component({
   selector: 'app-worlds-table',
   templateUrl: './worlds-table.component.html',
-  styleUrls: ['./worlds-table.component.css']
+  styleUrls: ['./worlds-table.component.scss']
 })
 export class WorldsTableComponent implements OnInit, OnChanges {
 
-  worlds$: Observable<World[]>;
-  selectedWorldId$: Observable<number>;
+  worlds$: Observable<World[]> = this.store.select(selectAllWorlds);
+
+  selectedWorldId$: Observable<number> = this.store.select(selectSelectedWorldId);
+
+  vm$ = combineLatest([
+    this.worlds$,
+    this.selectedWorldId$
+  ]).pipe(
+    map(([worlds, selectedWorldId]) => {
+      return { worlds, selectedWorldId };
+    })
+  );
 
   constructor(
     private store: Store<AppState>
   ) { 
     console.log("WorldsTableComponent | constructor");
-    this.worlds$ = this.store.select(selectAllWorlds);
-    this.selectedWorldId$ = this.store.select(selectSelectedWorldId);
   }
 
   ngOnInit() {
@@ -38,8 +46,8 @@ export class WorldsTableComponent implements OnInit, OnChanges {
     console.log("WorldsTableComponent | ngDoCheck")
   }
 
-  onWorldClicked(g: World) {
-    this.store.dispatch(WorldActions.setSelectedWorld({ worldId: g.worldId }));
+  onWorldClicked(w: World, selectedWorldId: number) {
+    const newSelectedWorldId = (w.worldId !== selectedWorldId) ? w.worldId : null; 
+    this.store.dispatch(WorldActions.setSelectedWorld({ worldId: newSelectedWorldId }));
   }
-
 }
