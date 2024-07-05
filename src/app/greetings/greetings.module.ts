@@ -7,11 +7,13 @@ import { GreetingsRoutingModule } from './greetings-routing.module';
 import { GreetingsComponent } from './greetings.component';
 import { GreetingsTableComponent } from './greetings-table/greetings-table.component';
 import { GreetingsCountComponent } from './greetings-count/greetings-count.component';
+import { GreetingsButtonsComponent } from './greetings-buttons/greetings-buttons.component';
 
 @NgModule({
   declarations: [
     GreetingsComponent,
     GreetingsTableComponent,
+    GreetingsButtonsComponent,
     GreetingsCountComponent
   ],
   imports: [
@@ -19,7 +21,8 @@ import { GreetingsCountComponent } from './greetings-count/greetings-count.compo
     GreetingsRoutingModule
   ],
   exports: [
-    GreetingsComponent
+    GreetingsComponent,
+    GreetingsButtonsComponent
   ]
 })
 export class GreetingsModule { }

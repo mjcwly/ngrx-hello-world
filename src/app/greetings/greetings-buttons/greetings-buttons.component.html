@@ -1,0 +1,14 @@
+<div class="container" *ngIf="vm$ | async as vm">
+  <span class="button-container" *ngFor="let g of vm.greetings">
+    <button
+      type="button"
+      class="btn btn-lg"
+      [ngClass]="{
+        'btn-light': g.greetingId !== vm.selectedGreetingId,
+        'btn-success-light': g.greetingId === vm.selectedGreetingId
+      }"
+      (click)="onGreetingClicked(g, vm.selectedGreetingId)">
+        {{ g.greetingText }}
+    </button>
+  </span>
+</div>

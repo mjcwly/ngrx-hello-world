@@ -1,0 +1,14 @@
+<div class="container" *ngIf="vm$ | async as vm">
+  <span class="button-container" *ngFor="let w of vm.worlds">
+    <button
+      type="button"
+      class="btn btn-lg"
+      [ngClass]="{
+        'btn-light': w.worldId !== vm.selectedWorldId,
+        'btn-success-light': w.worldId === vm.selectedWorldId
+      }"
+      (click)="onWorldClicked(w, vm.selectedWorldId)">
+        {{ w.worldName }}
+    </button>
+  </span>
+</div>
